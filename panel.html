@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SHU MATCH</title>
+</head>
+
+<script src="scripts/js/firebase.js"></script>
+<script src="scripts/js/login.js"></script>
+<script src="scripts/js/signup.js"></script>
+
+<script type="text/javascript">
+  function load(){
+    var admin = false ;
+    if(admin){
+      document.getElementById("admin").innerHTML = '<h4 class="widget-title"> <span>Generate matches for users</span> <span data-tooltip="Clicking this button will generate all matches for users"></span> <a href="#" class="tooltip-left button" data-tooltip="Generating can only be done once">Generate Matches</a> </h4>'; 
+      document.getElementById("admin2").innerHTML = '<h4 class="widget-title"><span data-tooltip="Analytical data for your Review Invites.">Generate Analytics</span> <a href="#" class="button">Generate Analytics</a></h4> <div class="widget-content"> <p>Number of users: <strong class="bubble hoverable tooltip" data-tooltip="Total number of users">200</strong></p> <p>Male to Female ratio</p> <div class="width-graph"> <div class="five-star tooltip-bottom" data-tooltip="100 (50%) Male" style="width: 50%"></div> <div class="three-star tooltip-bottom" data-tooltip="100 (50%) Female" style="width: 50%"></div> </div> <p>Straight to gay ratio</p> <div class="width-graph"> <div class="five-star tooltip-bottom" data-tooltip="160 (80%) of users are Straight" style="width: 80%"></div> <div class="three-star tooltip-bottom" data-tooltip="40 (20%) of contacts did not leave a review." style="width: 20%"></div> </div> </div>'; 
+    }
+    var user = firebase.auth().currentUser; 
+    var username = user.displayName.split(" ");
+    document.getElementById("name").innerHTML = username[0].charAt(0).toUpperCase() + username[0].slice(1) + " " + username[1].charAt(0).toUpperCase() + username[1].slice(1); 
+  }
+</script>
+<body onload="load()">
+    <div class="contr">
+    <div class="header">
+      <span class="label"><strong>SHUmatch</strong></span>
+
+      <div class="menu">
+        <a href="#">Settings</a>
+        <a href="#">Signout</a>
+      </div>
+    </div>
+    <div class="main">
+      <div class="widget totals">
+        <div id="admin"></div>
+        <h4 class="widget-title">
+          <span>Welcome<span id="name"></span></span>
+          <span data-tooltip="Clicking this button will generate all matches for users"></span>
+        </h4>
+
+        <div class="widget-content">
+          <p>Information</p>      
+        </div>
+      </div>
+
+      <div class="widget half local">
+        <div class="widget-content">
+          <p>Your Information</p>
+            
+            <div id="interests">
+              <h3>I love a good party</h3>
+              <div id="word1"> <input type="radio" id="w1" name="wd1" value="NEVER" > <label for="w1">NEVER</label> <input type="radio" id="w2" name="wd1"value="SOMETIMES"> <label for="w2">SOMETIMES</label> <input type="radio" id="w3" name="wd1"value="ALWAYS"> <label for="w3">ALWAYS</label> </div>
+              <h3>I'm a social butterfly</h3>
+              <div id="word2"> <input type="radio" id="w2w1" name="wd2" value="NEVER"> <label for="w2w1">NEVER</label><input type="radio" id="w2w2" name="wd2"value="SOMETIMES"> <label for="w2w2">SOMETIMES</label> <input type="radio" id="w2w3" name="wd2"value="ALWAYS"> <label for="w2w3">ALWAYS</label> </div>
+              <h3>I like a lot of alone time</h3>
+              <div id="word3"><input type="radio" id="w3w1" name="wd3" value="NEVER"><label for="w3w1">NEVER</label> <input type="radio" id="w3w2" name="wd3"value="SOMETIMES"> <label for="w3w2">SOMETIMES</label> <input type="radio" id="w3w3" name="wd3"value="ALWAYS"><label for="w3w3">ALWAYS</label> </div>
+          </div>
+          <div id="contact-information">
+              <p>Whats the best way to contact you</p>
+              <textarea id="contact" placeholder="Facebook, Twitter, instagram or snapchat.. maybe your number"></textarea>
+          </div>
+
+
+
+          <div style="clear:both;"></div>
+          <div class="traverse text-center">
+            <a href="#" class="button">Edit</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div  class="widget half external">
+        <div class="widget-content">
+          <p>What you want</p>
+
+
+          <h3>They should love a good party</h3>
+          <div id="word1"><input type="radio" id="tw1" name="twd1" value="NEVER"><label for="tw1">NEVER</label> <input type="radio" id="tw2" name="twd1"value="SOMETIMES"><label for="tw2">SOMETIMES</label> <input type="radio" id="tw3" name="twd1"value="ALWAYS"><label for="tw3">ALWAYS</label> </div>
+          <h4>They should be a social butterfly</h4>
+          <div id="word2"><input type="radio" id="tw2w1" name="twd2" value="NEVER"><label for="tw2w1">NEVER</label> <input type="radio" id="tw2w2" name="twd2"value="SOMETIMES"><label for="tw2w2">SOMETIMES</label><input type="radio" id="tw2w3" name="twd2"value="ALWAYS"><label for="tw2w3">ALWAYS</label></div>
+          <h3>They should like a lot of alone time</h3>
+          <div id="word3"><input type="radio" id="tw3w1" name="twd3" value="NEVER"><label for="tw3w1">NEVER</label> <input type="radio" id="tw3w2" name="twd3"value="SOMETIMES"><label for="tw3w2">SOMETIMES</label><input type="radio" id="tw3w3" name="twd3"value="ALWAYS"><label for="tw3w3">ALWAYS</label></div>
+
+          <div style="clear:both;"></div>
+          <div class="traverse text-center">
+            <a href="#" class="button">Edit</a>
+            <a style="display: none;" href="#" class="button">Save</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="admin2" class="widget invites"></div>
+
+      <img  class="center" style="display: block; margin-right: auto; margin-left: auto; width: 45vh; height: 65vh"; src="assets/img/main.png">
+    </div>
+  </div>
+<!--</div> -->
+</body>
+
+</html>
